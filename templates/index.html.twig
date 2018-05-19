@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    {% for song in songs %}
+        <div class="song">
+            <div class="song-button" data-song="{{ song.publicPath }}"></div>
+            <span class="song-name">{{ song.name }}</span>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+{% block js %}
+    {{ parent() }}
+    <script rel="script" src="/js/soundbox.js"></script>
+    <script>
+        $(document).ready(function () {
+            let soundbox = new SoundBox();
+
+            $('.song-button').each(function () {
+                let song = $(this).data('song');
+
+                soundbox.load(song, song, function () {
+                    console.info("> Loaded " + song);
+                });
+
+                $(this).on("click", function () {
+                    console.info("> Playing " + song);
+                    let element = $(this);
+
+                    element.append("<div class='song-indicator'></div>");
+
+                    soundbox.play(song, function () {
+                        element.empty()
+                    })
+                })
+            });
+
+        });
+    </script>
+{% endblock %}
