@@ -6,7 +6,7 @@
             <span class="song-name">{{ song.name }}</span>
         </div>
     {% endfor %}
-    <button onclick="preLoad()" class="init-button">Initialize (mobile use)</button>
+    <button onclick="preLoad()" class="init-button">Initialize (to prevent delay)</button>
 {% endblock %}
 
 {% block js %}
@@ -16,6 +16,7 @@
 
         function preLoad() {
             alert('Preload start');
+            $('.init-button').remove();
             let soundbox = new SoundBox();
             $('.song-button').each(function () {
                 let song = $(this).data('song');
@@ -35,6 +36,12 @@
                     })
                 })
             });
+
+            alert('Pre-load end, start using')
         }
+
+        $(document).ready(function () {
+            alert("Please pre-load songs with button in the bottom corner left before use the soundbox");
+        })
     </script>
 {% endblock %}
