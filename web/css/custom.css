@@ -45,6 +45,7 @@ header h1 {
     border-radius: 100%;
     background-color: red;
     position: relative;
+    border: inset black 4px;
 }
 
 .song .song-name {
