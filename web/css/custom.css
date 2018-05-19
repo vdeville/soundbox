@@ -51,7 +51,7 @@ header h1 {
     display: block;
     text-align: center;
     color: black;
-    white-space: nowrap;
+    /* white-space: nowrap; */
     font-weight: 700;
     margin-top: 10px;
     font-size: 2rem;
