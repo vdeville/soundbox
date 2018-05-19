@@ -74,3 +74,12 @@ header h1 {
         -webkit-transform: rotate(360deg);
     }
 }
+
+.init-button {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 0 .4rem .4rem 0;
+}
