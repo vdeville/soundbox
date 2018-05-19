@@ -2,7 +2,7 @@
 {% block content %}
     {% for song in songs %}
         <div class="song">
-            <div class="song-button" data-song="{{ song.publicPath }}"></div>
+            <div class="song-button" style="background-color: {{ song.color }}" data-song="{{ song.publicPath }}"></div>
             <span class="song-name">{{ song.name }}</span>
         </div>
     {% endfor %}

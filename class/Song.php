@@ -7,6 +7,8 @@ class Song
 {
     private $splFile;
 
+    private $color;
+
     /**
      * Song constructor.
      * @param SplFileInfo $file
@@ -14,7 +16,7 @@ class Song
     public function __construct(SplFileInfo $file)
     {
         $this->splFile = $file;
-
+        $this->color = '#' . substr(md5($this->getName()), 0, 6);
     }
 
     /**
@@ -33,6 +35,13 @@ class Song
      */
     public function getPublicPath() {
         return '/' . SOUNDS_FOLDER . $this->splFile->getFilename();
+    }
+
+    /**
+     * @return string
+     */
+    public function getColor(){
+        return $this->color;
     }
 
     /**
