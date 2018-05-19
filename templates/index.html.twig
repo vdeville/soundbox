@@ -18,6 +18,7 @@
             alert('Preload start');
             $('.init-button').remove();
             let soundbox = new SoundBox();
+
             $('.song-button').each(function () {
                 let song = $(this).data('song');
 
@@ -35,9 +36,7 @@
                         element.empty()
                     })
                 })
-            });
-
-            alert('Pre-load end, start using')
+            })
         }
 
         $(document).ready(function () {
