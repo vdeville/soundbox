@@ -17,7 +17,7 @@ class SoundManager
         $songs = [];
 
         /** @var SplFileInfo $file */
-        foreach ($finder->in(PUBLIC_PATH.SOUNDS_FOLDER)->files() as $file) {
+        foreach ($finder->in(PUBLIC_PATH.SOUNDS_FOLDER)->files()->sortByName() as $file) {
             if (in_array($file->getExtension(), ALLOWED_EXTENSION)) {
                 $songs[] = new Song($file);
             }
