@@ -1,14 +1,19 @@
 /**
  * SoundBox
  * By Starbeamrainbowlabs
+ * License: MIT License
  * A super simple JS library for playing sound effects and other audio.
  *
  * Note to self: When making a release, remember to update the version number at the bottom of the file!
  */
+"use strict";
 
-function SoundBox() {
-	this.sounds = {};
-	this.load = function(sound_name, path, callback) {
+class SoundBox {
+	constructor() {
+		this.sounds = {};
+	}
+	
+	load(sound_name, path, callback) {
 		this.sounds[sound_name] = new Audio(path);
 		if(typeof callback == "function")
 			this.sounds[sound_name].addEventListener("canplaythrough", callback);
@@ -19,21 +24,21 @@ function SoundBox() {
 			});
 	};
 	
-	this.remove = function(sound_name) {
+	remove(sound_name) {
 		if(typeof this.sounds != "undefined")
 			delete this.sounds[sound_name];
 		if(typeof this.sound_callbacks == "function")
 			delete this.sound_callbacks[sound_name];
 	};
 	
-	this.play = function(sound_name, callback) {
+	play(sound_name, callback, volume = 1) {
 		if(typeof this.sounds[sound_name] == "undefined") {
 			console.error("Can't find sound called '" + sound_name + "'.");
 			return false;
 		}
 		
 		var soundInstance = this.sounds[sound_name].cloneNode(true);
-		
+		soundInstance.volume = volume;
 		soundInstance.play();
 		
 		if(typeof callback == "function") {
@@ -46,4 +51,6 @@ function SoundBox() {
 	};
 }
 
-SoundBox.version = "0.2.2";
+SoundBox.version = "0.3";
+
+export default SoundBox;
