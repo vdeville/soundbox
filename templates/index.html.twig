@@ -7,7 +7,7 @@
             <span class="song-name">{{ song.name }}</span>
         </div>
     {% endfor %}
-    <button onclick="preLoad()" class="action-button init-button">Initialize (to prevent delay)</button>
+    <button onclick="preLoad()" class="action-button init-button">Initialize (force)</button>
 {% endblock %}
 
 {% block js %}
@@ -17,7 +17,6 @@
         let soundbox = new SoundBox();
 
         function preLoad() {
-            alert('Preload start');
             $('.init-button').remove();
 
             $('.song-button').each(function () {
@@ -45,7 +44,13 @@
         }
 
         $(document).ready(function () {
-            alert("Please pre-load songs with blue button in the top right corner before use the soundbox");
-        })
+            preLoad();
+        });
+
+        $(document).keyup(function (e) {
+            if (e.keyCode === 27) {
+                stopAll();
+            }
+        });
     </script>
 {% endblock %}
