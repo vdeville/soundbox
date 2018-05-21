@@ -1,23 +1,24 @@
 {% extends 'base.html.twig' %}
 {% block content %}
+    <button onclick="stopAll()" class="action-button stop-button">STOP sounds (ESC)</button>
     {% for song in songs %}
         <div class="song">
             <div class="song-button" style="background-color: {{ song.color }}" data-song="{{ song.publicPath }}"></div>
             <span class="song-name">{{ song.name }}</span>
         </div>
     {% endfor %}
-    <button onclick="preLoad()" class="init-button">Initialize (to prevent delay)</button>
+    <button onclick="preLoad()" class="action-button init-button">Initialize (to prevent delay)</button>
 {% endblock %}
 
 {% block js %}
     {{ parent() }}
     <script rel="script" src="/js/soundbox.js"></script>
     <script>
+        let soundbox = new SoundBox();
 
         function preLoad() {
             alert('Preload start');
             $('.init-button').remove();
-            let soundbox = new SoundBox();
 
             $('.song-button').each(function () {
                 let song = $(this).data('song');
@@ -39,8 +40,12 @@
             })
         }
 
+        function stopAll() {
+            soundbox.stop_all();
+        }
+
         $(document).ready(function () {
-            alert("Please pre-load songs with button in the bottom corner left before use the soundbox");
+            alert("Please pre-load songs with blue button in the top right corner before use the soundbox");
         })
     </script>
 {% endblock %}

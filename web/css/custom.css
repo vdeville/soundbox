@@ -76,11 +76,22 @@ header h1 {
     }
 }
 
-.init-button {
+.action-button {
     position: fixed;
-    bottom: 0;
-    left: 0;
     padding-left: 10px;
     padding-right: 10px;
-    border-radius: 0 .4rem .4rem 0;
+}
+
+.stop-button {
+    top: 5px;
+    left: 5px;
+    border-color: #e74c3c;
+    background-color: #e74c3c;
+}
+
+.init-button {
+    top: 5px;
+    right: 5px;
+    border-color: #3498db;
+    background-color: #3498db;
 }
