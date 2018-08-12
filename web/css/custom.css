@@ -60,9 +60,10 @@ header h1 {
 }
 
 .song .song-button .song-indicator {
+    position: absolute;
     height: 100%;
     background-color: black;
-    margin: auto;
+    left: calc(50% - 3px);
     width: 6px;
     animation: rotating 2s linear infinite;
 }
